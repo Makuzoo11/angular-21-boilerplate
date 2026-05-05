@@ -1,0 +1,19 @@
+# dependencies
+/node_modules
+
+# production
+/dist
+
+# development
+/out-tsc
+/.angular
+
+# misc
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# IDEs
+.idea
+.vscode
+.DS_Store
