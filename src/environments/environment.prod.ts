@@ -1,7 +1,7 @@
 export const environment = {
 <<<<<<< HEAD
     production: true,
-    apiUrl: 'http://localhost:4000'
+    apiUrl: 'node-mysql-api-production-ad03.up.railway.app'
 };
 =======
   production: true,
