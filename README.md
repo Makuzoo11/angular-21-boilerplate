@@ -109,7 +109,7 @@ apiUrl: 'http://localhost:4000'
 ```
 
 ## 3) Run the app (fake backend, no API)
-=======
+=======// { provide: HTTP_INTERCEPTORS, useClass: FakeBackendInterceptor, multi: true }
 apiUrl: 'http://localhost:4000'
 ## #3 Run the app (fake backend, no API)
 >>>>>>> 60d3a3fdbc1d84564d77ba326470f31391c17f76
