@@ -1,5 +1,9 @@
 import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+<<<<<<< HEAD
 import { finalize, first } from 'rxjs';
+=======
+import { finalize, first } from 'rxjs/operators';
+>>>>>>> 60d3a3fdbc1d84564d77ba326470f31391c17f76
 
 import { AccountService, AlertService } from '@app/_services';
 

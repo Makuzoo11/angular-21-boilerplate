@@ -1,4 +1,5 @@
 # This file is used by the build system to adjust CSS and JS output to support the specified browsers below.
+<<<<<<< HEAD
 # For additional information regarding the format and rule options, please see:
 # https://github.com/browserslist/browserslist#queries
 
@@ -14,3 +15,11 @@ last 2 Edge major versions
 last 2 Safari major versions
 last 2 iOS major versions
 Firefox ESR
+=======
+# For additional details, see https://angular.io/guide/browser-support
+> 0.5%
+last 2 versions
+Firefox ESR
+not dead
+not IE 9-11
+>>>>>>> 60d3a3fdbc1d84564d77ba326470f31391c17f76

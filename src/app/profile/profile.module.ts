@@ -8,6 +8,7 @@ import { DetailsComponent } from './details.component';
 import { UpdateComponent } from './update.component';
 
 @NgModule({
+<<<<<<< HEAD
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -20,3 +21,17 @@ import { UpdateComponent } from './update.component';
   ]
 })
 export class ProfileModule { }
+=======
+    imports: [
+        CommonModule,
+        ReactiveFormsModule,
+        ProfileRoutingModule
+    ],
+    declarations: [
+        LayoutComponent,
+        DetailsComponent,
+        UpdateComponent
+    ]
+})
+export class ProfileModule { }
+>>>>>>> 60d3a3fdbc1d84564d77ba326470f31391c17f76

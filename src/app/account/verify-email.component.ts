@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+<<<<<<< HEAD
 import { first } from 'rxjs';
+=======
+import { first } from 'rxjs/operators';
+>>>>>>> 60d3a3fdbc1d84564d77ba326470f31391c17f76
 
 import { AccountService, AlertService } from '@app/_services';
 
@@ -31,7 +35,14 @@ export class VerifyEmailComponent implements OnInit {
             .pipe(first())
             .subscribe({
                 next: () => {
+<<<<<<< HEAD
                     this.alertService.success('Verification successful, you can now login', { keepAfterRouteChange: true });
+=======
+                    this.alertService.success(
+                        'Verification successful, you can now login',
+                        { keepAfterRouteChange: true }
+                    );
+>>>>>>> 60d3a3fdbc1d84564d77ba326470f31391c17f76
                     this.router.navigate(['../login'], { relativeTo: this.route });
                 },
                 error: () => {
@@ -39,4 +50,8 @@ export class VerifyEmailComponent implements OnInit {
                 }
             });
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 60d3a3fdbc1d84564d77ba326470f31391c17f76

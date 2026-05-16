@@ -1,6 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
+<<<<<<< HEAD
 import { filter } from 'rxjs';
+=======
+import { filter } from 'rxjs/operators';
+>>>>>>> 60d3a3fdbc1d84564d77ba326470f31391c17f76
 
 import { Alert, AlertOptions, AlertType } from '@app/_models';
 
@@ -11,7 +15,11 @@ export class AlertService {
 
     // enable subscribing to alerts observable
     onAlert(id = this.defaultId): Observable<Alert> {
+<<<<<<< HEAD
         return this.subject.asObservable().pipe(filter((x: any) => x && x.id === id));
+=======
+        return this.subject.asObservable().pipe(filter(x => x && x.id === id));
+>>>>>>> 60d3a3fdbc1d84564d77ba326470f31391c17f76
     }
 
     // convenience methods
@@ -42,4 +50,8 @@ export class AlertService {
     clear(id = this.defaultId) {
         this.subject.next(new Alert({ id }));
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 60d3a3fdbc1d84564d77ba326470f31391c17f76

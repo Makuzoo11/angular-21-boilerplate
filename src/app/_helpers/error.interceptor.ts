@@ -7,6 +7,7 @@ import { AccountService } from '@app/_services';
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
+<<<<<<< HEAD
     constructor(private accountService: AccountService) { }
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -22,3 +23,22 @@ export class ErrorInterceptor implements HttpInterceptor {
         }))
     }
 }
+=======
+  constructor(private accountService: AccountService) {}
+
+  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    return next.handle(request).pipe(
+      catchError(err => {
+        if ([401, 403].includes(err.status) && this.accountService.accountValue) {
+          // auto logout if 401 or 403 response returned from api
+          this.accountService.logout();
+        }
+
+        const error = (err && err.error && err.error.message) || err.statusText;
+        console.error(error);
+        return throwError(() => error);
+      })
+    );
+  }
+}
+>>>>>>> 60d3a3fdbc1d84564d77ba326470f31391c17f76
