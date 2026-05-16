@@ -1,19 +1,10 @@
-<<<<<<< HEAD
-=======
-/* To learn more about this file see: https://angular.io/config/tsconfig. */
->>>>>>> 60d3a3fdbc1d84564d77ba326470f31391c17f76
 {
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "./",
-<<<<<<< HEAD
     "ignoreDeprecations": "5.0",
     "outDir": "./dist/out-tsc",
     "rootDir": "./src",
-=======
-    "rootDir": "src",
-    "outDir": "./dist/out-tsc",
->>>>>>> 60d3a3fdbc1d84564d77ba326470f31391c17f76
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
@@ -30,12 +21,7 @@
     "target": "ES2022",
     "module": "ES2022",
     "lib": [
-<<<<<<< HEAD
       "ES2022", "dom"
-=======
-      "ES2022",
-      "dom"
->>>>>>> 60d3a3fdbc1d84564d77ba326470f31391c17f76
     ],
     "paths": {
       "@app/*": ["src/app/*"],
@@ -48,9 +34,4 @@
     "strictInputAccessModifiers": true,
     "strictTemplates": true
   }
-<<<<<<< HEAD
 }
-
-=======
-}
->>>>>>> 60d3a3fdbc1d84564d77ba326470f31391c17f76
