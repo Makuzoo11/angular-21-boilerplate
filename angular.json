@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular-15-example": {
+    "angular-21-boilerplate": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/angular-15-example",
+            "outputPath": "dist/angular-21-boilerplate",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -68,14 +68,14 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "buildTarget": "angular-15-example:build:development"
+            "buildTarget": "angular-21-boilerplate:build:development"
           },
           "configurations": {
             "production": {
-              "buildTarget": "angular-15-example:build:production"
+              "buildTarget": "angular-21-boilerplate:build:production"
             },
             "development": {
-              "buildTarget": "angular-15-example:build:development"
+              "buildTarget": "angular-21-boilerplate:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -83,7 +83,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "angular-15-example:build"
+            "buildTarget": "angular-21-boilerplate:build"
           }
         },
         "test": {
