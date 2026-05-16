@@ -2,11 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
-<<<<<<< HEAD
-import { map, finalize } from 'rxjs';
-=======
 import { map, finalize } from 'rxjs/operators';
->>>>>>> 60d3a3fdbc1d84564d77ba326470f31391c17f76
 
 import { environment } from '@environments/environment';
 import { Account } from '@app/_models';
@@ -104,22 +100,13 @@ export class AccountService {
         return this.http.delete(`${baseUrl}/${id}`)
             .pipe(finalize(() => {
                 // auto logout if the logged in account was deleted
-<<<<<<< HEAD
-                if (id === this.accountValue?.id)
-                    this.logout();
-=======
                 if (id === this.accountValue?.id) {
                     this.logout();
                 }
->>>>>>> 60d3a3fdbc1d84564d77ba326470f31391c17f76
             }));
     }
 
     // helper methods
-<<<<<<< HEAD
-
-=======
->>>>>>> 60d3a3fdbc1d84564d77ba326470f31391c17f76
     private refreshTokenTimeout?: any;
 
     private startRefreshTokenTimer() {

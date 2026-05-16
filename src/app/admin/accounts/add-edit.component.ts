@@ -1,11 +1,7 @@
 import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-<<<<<<< HEAD
-import { finalize, first } from 'rxjs';
-=======
 import { finalize, first } from 'rxjs/operators';
->>>>>>> 60d3a3fdbc1d84564d77ba326470f31391c17f76
 
 import { AccountService, AlertService } from '@app/_services';
 import { MustMatch } from '@app/_helpers';
@@ -13,11 +9,7 @@ import { MustMatch } from '@app/_helpers';
 @Component({ templateUrl: 'add-edit.component.html', standalone: false })
 export class AddEditComponent implements OnInit, OnDestroy {
     form!: FormGroup;
-<<<<<<< HEAD
-    id?: string;
-=======
     id!: string;
->>>>>>> 60d3a3fdbc1d84564d77ba326470f31391c17f76
     title!: string;
     loading = false;
     submitting = false;
@@ -44,11 +36,7 @@ export class AddEditComponent implements OnInit, OnDestroy {
             email: ['', [Validators.required, Validators.email]],
             role: ['', Validators.required],
             // password only required in add mode
-<<<<<<< HEAD
-            password: ['', [Validators.minLength(6), ...(!this.id ? [Validators.required] : [])]],
-=======
             password: ['', [Validators.minLength(6), ...(this.id ? [] : [Validators.required])]],
->>>>>>> 60d3a3fdbc1d84564d77ba326470f31391c17f76
             confirmPassword: ['']
         }, {
             validator: MustMatch('password', 'confirmPassword')
@@ -119,14 +107,9 @@ export class AddEditComponent implements OnInit, OnDestroy {
         // create or update account based on id param
         let saveAccount;
         let message: string;
-<<<<<<< HEAD
-        if (this.id) {
-            saveAccount = () => this.accountService.update(this.id!, this.form.value);
-=======
 
         if (this.id) {
             saveAccount = () => this.accountService.update(this.id, this.form.value);
->>>>>>> 60d3a3fdbc1d84564d77ba326470f31391c17f76
             message = 'Account updated';
         } else {
             saveAccount = () => this.accountService.create(this.form.value);
@@ -147,8 +130,4 @@ export class AddEditComponent implements OnInit, OnDestroy {
                 }
             });
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 60d3a3fdbc1d84564d77ba326470f31391c17f76

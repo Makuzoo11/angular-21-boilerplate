@@ -16,11 +16,7 @@ const routes: Routes = [
             { path: 'register', component: RegisterComponent },
             { path: 'verify-email', component: VerifyEmailComponent },
             { path: 'forgot-password', component: ForgotPasswordComponent },
-<<<<<<< HEAD
-            { path: 'reset-password', component: ResetPasswordComponent },
-=======
             { path: 'reset-password', component: ResetPasswordComponent }
->>>>>>> 60d3a3fdbc1d84564d77ba326470f31391c17f76
         ]
     }
 ];

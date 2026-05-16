@@ -1,11 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-<<<<<<< HEAD
-import { first } from 'rxjs';
-=======
 import { first } from 'rxjs/operators';
->>>>>>> 60d3a3fdbc1d84564d77ba326470f31391c17f76
 
 import { AccountService, AlertService } from '@app/_services';
 import { MustMatch } from '@app/_helpers';
@@ -64,11 +60,7 @@ export class UpdateComponent implements OnInit {
                     this.alertService.success('Update successful', { keepAfterRouteChange: true });
                     this.router.navigate(['../'], { relativeTo: this.route });
                 },
-<<<<<<< HEAD
-                error: (error: any) => {
-=======
                 error: error => {
->>>>>>> 60d3a3fdbc1d84564d77ba326470f31391c17f76
                     this.alertService.error(error);
                     this.submitting = false;
                 }
@@ -85,8 +77,4 @@ export class UpdateComponent implements OnInit {
                 });
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 60d3a3fdbc1d84564d77ba326470f31391c17f76

@@ -1,25 +1,3 @@
-<<<<<<< HEAD
-<!-- nav -->
-<nav class="navbar navbar-expand navbar-dark bg-dark px-3" *ngIf="account">
-    <div class="navbar-nav">
-        <a class="nav-item nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
-        <a class="nav-item nav-link" routerLink="/admin" routerLinkActive="active" *ngIf="account.role === Role.Admin">Admin</a>
-        <a class="nav-item nav-link" routerLink="/profile" routerLinkActive="active">Profile</a>
-        <a class="nav-item nav-link" (click)="logout()">Logout</a>
-    </div>
-</nav>
-
-<!-- subnav router outlet -->
-<router-outlet name="subnav"></router-outlet>
-
-<!-- global alert -->
-<alert></alert>
-
-<!-- main router outlet -->
-<div class="app-container">
-    <router-outlet></router-outlet>
-</div>
-=======
 <div class="app-container" [ngClass]="{ 'bg-light': account }">
 
     <!-- main nav -->
@@ -42,4 +20,3 @@
     <router-outlet></router-outlet>
 
 </div>
->>>>>>> 60d3a3fdbc1d84564d77ba326470f31391c17f76

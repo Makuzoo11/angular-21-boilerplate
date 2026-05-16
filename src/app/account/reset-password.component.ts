@@ -1,11 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-<<<<<<< HEAD
-import { first } from 'rxjs';
-=======
 import { first } from 'rxjs/operators';
->>>>>>> 60d3a3fdbc1d84564d77ba326470f31391c17f76
 
 import { AccountService, AlertService } from '@app/_services';
 import { MustMatch } from '@app/_helpers';
@@ -20,11 +16,7 @@ enum TokenStatus {
 export class ResetPasswordComponent implements OnInit {
     TokenStatus = TokenStatus;
     tokenStatus = TokenStatus.Validating;
-<<<<<<< HEAD
-    token?: string;
-=======
     token!: string;
->>>>>>> 60d3a3fdbc1d84564d77ba326470f31391c17f76
     form!: FormGroup;
     loading = false;
     submitted = false;
@@ -40,11 +32,7 @@ export class ResetPasswordComponent implements OnInit {
     ngOnInit() {
         this.form = this.formBuilder.group({
             password: ['', [Validators.required, Validators.minLength(6)]],
-<<<<<<< HEAD
-            confirmPassword: ['', Validators.required],
-=======
             confirmPassword: ['', Validators.required]
->>>>>>> 60d3a3fdbc1d84564d77ba326470f31391c17f76
         }, {
             validator: MustMatch('password', 'confirmPassword')
         });
@@ -82,11 +70,7 @@ export class ResetPasswordComponent implements OnInit {
         }
 
         this.loading = true;
-<<<<<<< HEAD
-        this.accountService.resetPassword(this.token!, this.f['password'].value, this.f['confirmPassword'].value)
-=======
         this.accountService.resetPassword(this.token, this.f.password.value, this.f.confirmPassword.value)
->>>>>>> 60d3a3fdbc1d84564d77ba326470f31391c17f76
             .pipe(first())
             .subscribe({
                 next: () => {

@@ -1,11 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-<<<<<<< HEAD
-import { first } from 'rxjs';
-=======
 import { first } from 'rxjs/operators';
->>>>>>> 60d3a3fdbc1d84564d77ba326470f31391c17f76
 
 import { AccountService, AlertService } from '@app/_services';
 import { MustMatch } from '@app/_helpers';
@@ -57,14 +53,10 @@ export class RegisterComponent implements OnInit {
             .pipe(first())
             .subscribe({
                 next: () => {
-<<<<<<< HEAD
-                    this.alertService.success('Registration successful, please check your email for verification instructions', { keepAfterRouteChange: true });
-=======
                     this.alertService.success(
                         'Registration successful, please check your email for verification instructions',
                         { keepAfterRouteChange: true }
                     );
->>>>>>> 60d3a3fdbc1d84564d77ba326470f31391c17f76
                     this.router.navigate(['../login'], { relativeTo: this.route });
                 },
                 error: error => {
@@ -73,8 +65,4 @@ export class RegisterComponent implements OnInit {
                 }
             });
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 60d3a3fdbc1d84564d77ba326470f31391c17f76

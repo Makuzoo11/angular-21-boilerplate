@@ -1,35 +1,6 @@
 <h3 class="card-header">Register</h3>
 <div class="card-body">
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
-<<<<<<< HEAD
-        <div class="mb-3">
-            <label class="form-label">Title</label>
-            <select formControlName="title" class="form-select" [ngClass]="{ 'is-invalid': submitted && f.title.errors }">
-                <option value=""></option>
-                <option value="Mr">Mr</option>
-                <option value="Mrs">Mrs</option>
-                <option value="Miss">Miss</option>
-                <option value="Ms">Ms</option>
-            </select>
-            <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
-                <div *ngIf="f.title.errors.required">Title is required</div>
-            </div>
-        </div>
-        <div class="mb-3">
-            <label class="form-label">First Name</label>
-            <input type="text" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
-            <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
-                <div *ngIf="f.firstName.errors.required">First Name is required</div>
-            </div>
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Last Name</label>
-            <input type="text" formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
-            <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
-                <div *ngIf="f.lastName.errors.required">Last Name is required</div>
-            </div>
-        </div>
-=======
         <div class="row">
             <div class="mb-3 col-2">
                 <label class="form-label">Title</label>
@@ -62,7 +33,6 @@
             </div>
         </div>
 
->>>>>>> 60d3a3fdbc1d84564d77ba326470f31391c17f76
         <div class="mb-3">
             <label class="form-label">Email</label>
             <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
@@ -71,10 +41,7 @@
                 <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
             </div>
         </div>
-<<<<<<< HEAD
-=======
 
->>>>>>> 60d3a3fdbc1d84564d77ba326470f31391c17f76
         <div class="row">
             <div class="mb-3 col">
                 <label class="form-label">Password</label>
@@ -84,10 +51,7 @@
                     <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
                 </div>
             </div>
-<<<<<<< HEAD
-=======
 
->>>>>>> 60d3a3fdbc1d84564d77ba326470f31391c17f76
             <div class="mb-3 col">
                 <label class="form-label">Confirm Password</label>
                 <input type="password" formControlName="confirmPassword" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }" />
@@ -97,13 +61,6 @@
                 </div>
             </div>
         </div>
-<<<<<<< HEAD
-        <div class="mb-3 form-check">
-            <input type="checkbox" formControlName="acceptTerms" id="acceptTerms" class="form-check-input" [ngClass]="{ 'is-invalid': submitted && f.acceptTerms.errors }" />
-            <label for="acceptTerms" class="form-check-label">Accept Terms & Conditions</label>
-            <div *ngIf="submitted && f.acceptTerms.errors" class="invalid-feedback">Accept Ts & Cs is required</div>
-        </div>
-=======
 
         <div class="mb-3 form-check">
             <input type="checkbox" formControlName="acceptTerms" id="acceptTerms" class="form-check-input" [ngClass]="{ 'is-invalid': submitted && f.acceptTerms.errors }" />
@@ -113,7 +70,6 @@
             </div>
         </div>
 
->>>>>>> 60d3a3fdbc1d84564d77ba326470f31391c17f76
         <div class="mb-3">
             <button [disabled]="submitting" class="btn btn-primary">
                 <span *ngIf="submitting" class="spinner-border spinner-border-sm me-1"></span>

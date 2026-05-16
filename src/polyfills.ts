@@ -1,22 +1,12 @@
-<<<<<<< HEAD
-/**
-=======
 /***
 
->>>>>>> 60d3a3fdbc1d84564d77ba326470f31391c17f76
  * This file includes polyfills needed by Angular and is loaded before the app.
  * You can add your own extra polyfills to this file.
  *
  * This file is divided into 2 sections:
-<<<<<<< HEAD
- *   1. Browser polyfills. These are applied before loading ZoneJS and are sorted by browsers.
- *   2. Application imports. Files imported after ZoneJS that should be loaded before your main
- *      file.
-=======
  * 1. Browser polyfills. These are applied before loading ZoneJS and are sorted by browsers.
  * 2. Application imports. Files imported after ZoneJS that should be loaded before your main
  *    file.
->>>>>>> 60d3a3fdbc1d84564d77ba326470f31391c17f76
  *
  * The current setup is for so-called "evergreen" browsers; the last versions of browsers that
  * automatically update themselves. This includes recent versions of Safari, Chrome (including
@@ -34,13 +24,8 @@
  * user can disable parts of macroTask/DomEvents patch by setting following flags
  * because those flags need to be set before `zone.js` being loaded, and webpack
  * will put import in the top of bundle, so user need to create a separate file
-<<<<<<< HEAD
- * in this directory (for example: zone-flags.ts), and put the following flags
- * into that file, and then add the following code before importing zone.js.
-=======
  * in this directory (for example: zone-flags.ts), and put the following code before
  * importing zone.js, and then add the following code before importing zone.js.
->>>>>>> 60d3a3fdbc1d84564d77ba326470f31391c17f76
  * import './zone-flags';
  *
  * The flags allowed in zone-flags.ts are listed here.
@@ -55,10 +40,6 @@
  * with the following flag, it will bypass `zone.js` patch for IE/Edge
  *
  * (window as any).__Zone_enable_cross_context_check = true;
-<<<<<<< HEAD
- *
-=======
->>>>>>> 60d3a3fdbc1d84564d77ba326470f31391c17f76
  */
 
 /***************************************************************************************************
@@ -66,13 +47,6 @@
  */
 import 'zone.js';  // Included with Angular CLI.
 
-<<<<<<< HEAD
-
 /***************************************************************************************************
  * APPLICATION IMPORTS
  */
-=======
-/***************************************************************************************************
- * APPLICATION IMPORTS
- */
->>>>>>> 60d3a3fdbc1d84564d77ba326470f31391c17f76

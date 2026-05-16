@@ -31,11 +31,7 @@ import { HomeComponent } from './home';
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
 
         // provider used to create fake backend
-<<<<<<< HEAD
-        fakeBackendProvider
-=======
         // fakeBackendProvider
->>>>>>> 60d3a3fdbc1d84564d77ba326470f31391c17f76
     ],
     bootstrap: [AppComponent]
 })
