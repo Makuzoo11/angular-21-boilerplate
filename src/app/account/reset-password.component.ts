@@ -29,31 +29,31 @@ export class ResetPasswordComponent implements OnInit {
         private alertService: AlertService
     ) { }
 
-    ngOnInit() {
-        this.form = this.formBuilder.group({
-            password: ['', [Validators.required, Validators.minLength(6)]],
-            confirmPassword: ['', Validators.required]
-        }, {
-            validator: MustMatch('password', 'confirmPassword')
+ngOnInit() {
+    this.form = this.formBuilder.group({
+        password: ['', [Validators.required, Validators.minLength(6)]],
+        confirmPassword: ['', Validators.required]
+    }, {
+        validator: MustMatch('password', 'confirmPassword')
+    });
+
+    const token = this.route.snapshot.queryParams['token'];
+    
+    // validate token first, then remove from url
+    this.accountService.validateResetToken(token)
+        .pipe(first())
+        .subscribe({
+            next: () => {
+                this.token = token;
+                this.tokenStatus = TokenStatus.Valid;
+                // remove token from url after successful validation
+                this.router.navigate([], { relativeTo: this.route, replaceUrl: true });
+            },
+            error: () => {
+                this.tokenStatus = TokenStatus.Invalid;
+            }
         });
-
-        const token = this.route.snapshot.queryParams['token'];
-
-        // remove token from url to prevent http referer leakage
-        this.router.navigate([], { relativeTo: this.route, replaceUrl: true });
-
-        this.accountService.validateResetToken(token)
-            .pipe(first())
-            .subscribe({
-                next: () => {
-                    this.token = token;
-                    this.tokenStatus = TokenStatus.Valid;
-                },
-                error: () => {
-                    this.tokenStatus = TokenStatus.Invalid;
-                }
-            });
-    }
+}
 
     // convenience getter for easy access to form fields
     get f() { return this.form.controls; }
