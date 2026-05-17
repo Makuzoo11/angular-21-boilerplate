@@ -37,25 +37,29 @@ ngOnInit() {
         validator: MustMatch('password', 'confirmPassword')
     });
 
-    const token = this.route.snapshot.queryParams['token'];
-    console.log('TOKEN FROM URL:', token);
-    
-    // validate token first, then remove from url
-    this.accountService.validateResetToken(token)
-        .pipe(first())
-        .subscribe({
-            next: () => {
-                this.token = token;
-                this.tokenStatus = TokenStatus.Valid;
-                // remove token from url after successful validation
-                this.router.navigate([], { relativeTo: this.route, replaceUrl: true });
-            },
-            error: () => {
-                this.tokenStatus = TokenStatus.Invalid;
-            }
-        });
-}
+    this.route.queryParams.pipe(first()).subscribe(params => {
+        const token = params['token'] ? decodeURIComponent(params['token']) : null;
+        console.log('TOKEN FROM URL:', token);
 
+        if (!token) {
+            this.tokenStatus = TokenStatus.Invalid;
+            return;
+        }
+
+        this.accountService.validateResetToken(token)
+            .pipe(first())
+            .subscribe({
+                next: () => {
+                    this.token = token;
+                    this.tokenStatus = TokenStatus.Valid;
+                    this.router.navigate([], { relativeTo: this.route, replaceUrl: true });
+                },
+                error: () => {
+                    this.tokenStatus = TokenStatus.Invalid;
+                }
+            });
+    });
+}
     // convenience getter for easy access to form fields
     get f() { return this.form.controls; }
 
