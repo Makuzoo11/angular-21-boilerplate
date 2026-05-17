@@ -1,20 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import { AccountService, AlertService } from '@app/_services';
 import { MustMatch } from '@app/_helpers';
 
-enum TokenStatus {
-    Validating,
-    Valid,
-    Invalid
-}
-
 @Component({ templateUrl: 'reset-password.component.html', standalone: false })
 export class ResetPasswordComponent implements OnInit {
-    TokenStatus = TokenStatus;
-    tokenStatus = TokenStatus.Validating;
+    tokenStatus = 0;
     token!: string;
     form!: FormGroup;
     loading = false;
@@ -25,7 +18,8 @@ export class ResetPasswordComponent implements OnInit {
         private route: ActivatedRoute,
         private router: Router,
         private accountService: AccountService,
-        private alertService: AlertService
+        private alertService: AlertService,
+        private cdr: ChangeDetectorRef
     ) { }
 
     ngOnInit() {
@@ -41,7 +35,8 @@ export class ResetPasswordComponent implements OnInit {
         console.log('TOKEN FROM URL:', token);
 
         if (!token) {
-            this.tokenStatus = TokenStatus.Invalid;
+            this.tokenStatus = 2;
+            this.cdr.detectChanges();
             return;
         }
 
@@ -50,11 +45,13 @@ export class ResetPasswordComponent implements OnInit {
             .subscribe({
                 next: () => {
                     this.token = token;
-                    this.tokenStatus = TokenStatus.Valid;
-                    console.log('FORM SHOULD SHOW NOW');
+                    this.tokenStatus = 1;
+                    this.cdr.detectChanges();
+                    console.log('FORM SHOULD SHOW NOW, tokenStatus:', this.tokenStatus);
                 },
                 error: () => {
-                    this.tokenStatus = TokenStatus.Invalid;
+                    this.tokenStatus = 2;
+                    this.cdr.detectChanges();
                 }
             });
     }
