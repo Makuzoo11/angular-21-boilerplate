@@ -10,7 +10,17 @@ This project is a beginner-friendly Angular 21 boilerplate that demonstrates a c
 - Role-based authorization (User & Admin)
 - Admin area for account management
 - Profile area for viewing/updating your own account
+# Angular 21 Boilerplate
 
+## Live Links
+- Frontend: https://angular-21-boilerplate-ivory.vercel.app
+- API Docs: https://node-mysql-api-production-ad03.up.railway.app/api-docs
+
+## Setup
+1. Clone the repo
+2. `npm install`
+3. `ng serve` for development
+4. `ng build --configuration production` for productions
 ## Table of contents
 
 - [1] Prerequisites (#1-prerequisites)
