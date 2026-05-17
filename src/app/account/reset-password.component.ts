@@ -38,6 +38,7 @@ ngOnInit() {
     });
 
     const token = this.route.snapshot.queryParams['token'];
+    console.log('TOKEN FROM URL:', token);
     
     // validate token first, then remove from url
     this.accountService.validateResetToken(token)
