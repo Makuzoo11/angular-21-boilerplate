@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
@@ -26,7 +26,8 @@ export class ResetPasswordComponent implements OnInit {
         private route: ActivatedRoute,
         private router: Router,
         private accountService: AccountService,
-        private alertService: AlertService
+        private alertService: AlertService,
+        private ngZone: NgZone
     ) { }
 
     ngOnInit() {
@@ -50,11 +51,16 @@ export class ResetPasswordComponent implements OnInit {
             .pipe(first())
             .subscribe({
                 next: () => {
-                    this.token = token;
-                    this.tokenStatus = TokenStatus.Valid;
+                    this.ngZone.run(() => {
+                        this.token = token;
+                        this.tokenStatus = TokenStatus.Valid;
+                        console.log('TOKEN STATUS SET TO VALID');
+                    });
                 },
                 error: () => {
-                    this.tokenStatus = TokenStatus.Invalid;
+                    this.ngZone.run(() => {
+                        this.tokenStatus = TokenStatus.Invalid;
+                    });
                 }
             });
     }
@@ -65,9 +71,7 @@ export class ResetPasswordComponent implements OnInit {
         this.submitted = true;
         this.alertService.clear();
 
-        if (this.form.invalid) {
-            return;
-        }
+        if (this.form.invalid) return;
 
         this.loading = true;
         this.accountService.resetPassword(this.token, this.f.password.value, this.f.confirmPassword.value)
