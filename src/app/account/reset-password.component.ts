@@ -20,6 +20,9 @@ export class ResetPasswordComponent implements OnInit {
     form!: FormGroup;
     loading = false;
     submitted = false;
+    isValidating = true;
+    isValid = false;
+    isInvalid = false;
 
     constructor(
         private formBuilder: FormBuilder,
@@ -50,18 +53,20 @@ export class ResetPasswordComponent implements OnInit {
         this.accountService.validateResetToken(token)
             .pipe(first())
             .subscribe({
-                next: () => {
-                    this.ngZone.run(() => {
-                        this.token = token;
-                        this.tokenStatus = TokenStatus.Valid;
-                        console.log('TOKEN STATUS SET TO VALID');
-                    });
-                },
-                error: () => {
-                    this.ngZone.run(() => {
-                        this.tokenStatus = TokenStatus.Invalid;
-                    });
-                }
+  next: () => {
+    this.ngZone.run(() => {
+        this.token = token;
+        this.isValidating = false;
+        this.isValid = true;
+        console.log('IS VALID:', this.isValid);
+    });
+},
+error: () => {
+    this.ngZone.run(() => {
+        this.isValidating = false;
+        this.isInvalid = true;
+    });
+}
             });
     }
 
