@@ -1,15 +1,20 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import { AccountService, AlertService } from '@app/_services';
 import { MustMatch } from '@app/_helpers';
 
+enum TokenStatus {
+    Validating,
+    Valid,
+    Invalid
+}
+
 @Component({ templateUrl: 'reset-password.component.html', standalone: false })
 export class ResetPasswordComponent implements OnInit {
-    isValidating = true;
-    isValid = false;
-    isInvalid = false;
+    TokenStatus = TokenStatus;
+    tokenStatus = TokenStatus.Validating;
     token!: string;
     form!: FormGroup;
     loading = false;
@@ -20,8 +25,7 @@ export class ResetPasswordComponent implements OnInit {
         private route: ActivatedRoute,
         private router: Router,
         private accountService: AccountService,
-        private alertService: AlertService,
-        private cdr: ChangeDetectorRef
+        private alertService: AlertService
     ) { }
 
     ngOnInit() {
@@ -37,9 +41,7 @@ export class ResetPasswordComponent implements OnInit {
         console.log('TOKEN FROM URL:', token);
 
         if (!token) {
-            this.isValidating = false;
-            this.isInvalid = true;
-            this.cdr.detectChanges();
+            this.tokenStatus = TokenStatus.Invalid;
             return;
         }
 
@@ -48,15 +50,11 @@ export class ResetPasswordComponent implements OnInit {
             .subscribe({
                 next: () => {
                     this.token = token;
-                    this.isValidating = false;
-                    this.isValid = true;
-                    this.cdr.detectChanges();
+                    this.tokenStatus = TokenStatus.Valid;
                     console.log('FORM SHOULD SHOW NOW');
                 },
                 error: () => {
-                    this.isValidating = false;
-                    this.isInvalid = true;
-                    this.cdr.detectChanges();
+                    this.tokenStatus = TokenStatus.Invalid;
                 }
             });
     }
