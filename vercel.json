@@ -1,4 +1,6 @@
 {
+  "buildCommand": "ng build --configuration production",
+  "outputDirectory": "dist/angular-21-boilerplate",
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
   ]
