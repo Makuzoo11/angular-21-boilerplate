@@ -1,21 +1,15 @@
-import { Component, OnInit, NgZone } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
-
 import { AccountService, AlertService } from '@app/_services';
 import { MustMatch } from '@app/_helpers';
 
-enum TokenStatus {
-    Validating,
-    Valid,
-    Invalid
-}
-
 @Component({ templateUrl: 'reset-password.component.html', standalone: false })
 export class ResetPasswordComponent implements OnInit {
-    TokenStatus = TokenStatus;
-    tokenStatus = TokenStatus.Validating;
+    isValidating = true;
+    isValid = false;
+    isInvalid = false;
     token!: string;
     form!: FormGroup;
     loading = false;
@@ -27,7 +21,7 @@ export class ResetPasswordComponent implements OnInit {
         private router: Router,
         private accountService: AccountService,
         private alertService: AlertService,
-        private ngZone: NgZone
+        private cdr: ChangeDetectorRef
     ) { }
 
     ngOnInit() {
@@ -43,7 +37,9 @@ export class ResetPasswordComponent implements OnInit {
         console.log('TOKEN FROM URL:', token);
 
         if (!token) {
-            this.tokenStatus = TokenStatus.Invalid;
+            this.isValidating = false;
+            this.isInvalid = true;
+            this.cdr.detectChanges();
             return;
         }
 
@@ -51,16 +47,16 @@ export class ResetPasswordComponent implements OnInit {
             .pipe(first())
             .subscribe({
                 next: () => {
-                    this.ngZone.run(() => {
-                        this.token = token;
-                        this.tokenStatus = TokenStatus.Valid;
-                        console.log('TOKEN STATUS SET TO VALID');
-                    });
+                    this.token = token;
+                    this.isValidating = false;
+                    this.isValid = true;
+                    this.cdr.detectChanges();
+                    console.log('FORM SHOULD SHOW NOW');
                 },
                 error: () => {
-                    this.ngZone.run(() => {
-                        this.tokenStatus = TokenStatus.Invalid;
-                    });
+                    this.isValidating = false;
+                    this.isInvalid = true;
+                    this.cdr.detectChanges();
                 }
             });
     }
@@ -70,9 +66,7 @@ export class ResetPasswordComponent implements OnInit {
     onSubmit() {
         this.submitted = true;
         this.alertService.clear();
-
         if (this.form.invalid) return;
-
         this.loading = true;
         this.accountService.resetPassword(this.token, this.f.password.value, this.f.confirmPassword.value)
             .pipe(first())
