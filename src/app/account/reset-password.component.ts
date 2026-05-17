@@ -29,16 +29,16 @@ export class ResetPasswordComponent implements OnInit {
         private alertService: AlertService
     ) { }
 
-ngOnInit() {
-    this.form = this.formBuilder.group({
-        password: ['', [Validators.required, Validators.minLength(6)]],
-        confirmPassword: ['', Validators.required]
-    }, {
-        validator: MustMatch('password', 'confirmPassword')
-    });
+    ngOnInit() {
+        this.form = this.formBuilder.group({
+            password: ['', [Validators.required, Validators.minLength(6)]],
+            confirmPassword: ['', Validators.required]
+        }, {
+            validator: MustMatch('password', 'confirmPassword')
+        });
 
-    this.route.queryParams.pipe(first()).subscribe(params => {
-        const token = params['token'] ? decodeURIComponent(params['token']) : null;
+        const urlParams = new URLSearchParams(window.location.search);
+        const token = urlParams.get('token');
         console.log('TOKEN FROM URL:', token);
 
         if (!token) {
@@ -52,24 +52,19 @@ ngOnInit() {
                 next: () => {
                     this.token = token;
                     this.tokenStatus = TokenStatus.Valid;
-                    this.router.navigate([], { relativeTo: this.route, replaceUrl: true });
                 },
                 error: () => {
                     this.tokenStatus = TokenStatus.Invalid;
                 }
             });
-    });
-}
-    // convenience getter for easy access to form fields
+    }
+
     get f() { return this.form.controls; }
 
     onSubmit() {
         this.submitted = true;
-
-        // reset alerts on submit
         this.alertService.clear();
 
-        // stop here if form is invalid
         if (this.form.invalid) {
             return;
         }
